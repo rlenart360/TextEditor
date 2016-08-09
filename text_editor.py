@@ -27,7 +27,7 @@ def quit():
 
 root = Tk()
 
-frame = Frame(root, height=720, width=720)
+frame = Frame(root, height=720, width=860)
 frame.pack()
 
 menubar = Menu(root)
@@ -40,21 +40,19 @@ filemenu.add_command(label="Exit", command=quit)
 menubar.add_cascade(label="File", menu=filemenu)
 
 editmenu = Menu(menubar, tearoff = 0)
-editmenu.add_command(label="Cut", command=donothing)
-editmenu.add_command(label="Copy", command=donothing)
-editmenu.add_command(label="Paste", command=donothing)
-editmenu.add_command(label="Delete", command=donothing)
-editmenu.add_command(label="Select All", command=donothing)
 menubar.add_cascade(label="Edit", menu=editmenu)
 
 helpmenu = Menu(menubar, tearoff = 0)
-helpmenu.add_command(label="About...", command=donothing)
-helpmenu.add_command(label="Help Index", command=donothing)
 menubar.add_cascade(label="Help", menu=helpmenu)
 
-textfield = Text(frame)
+textfield = Text(frame, bg = "#a5c0c9")
 textfield.pack()
 textfield.place(x=10, y=10, height=700, width=700)
+
+screen = Canvas(frame, bg = "black")
+screen.pack()
+screen.place(x=720, y=10, height=128, width=128)
+
 
 root.config(menu=menubar)
 root.mainloop()
