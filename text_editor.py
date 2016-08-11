@@ -1,6 +1,10 @@
 from tkinter import *
 from tkinter import filedialog
 
+def draw_pixel(x, y, color):
+	screen.create_rectangle(0+(x*16), 0+(y*16), 16+(x*16), 16+(y*16), fill=color)
+	
+
 def donothing():
 	filewin = Toplevel(root)
 	button = Button(filewin, text="Do nothing button")
@@ -27,7 +31,7 @@ def quit():
 
 root = Tk()
 
-frame = Frame(root, height=720, width=860)
+frame = Frame(root, height=535, width=1244)
 frame.pack()
 
 menubar = Menu(root)
@@ -39,19 +43,18 @@ filemenu.add_separator()
 filemenu.add_command(label="Exit", command=quit)
 menubar.add_cascade(label="File", menu=filemenu)
 
-editmenu = Menu(menubar, tearoff = 0)
-menubar.add_cascade(label="Edit", menu=editmenu)
 
 helpmenu = Menu(menubar, tearoff = 0)
 menubar.add_cascade(label="Help", menu=helpmenu)
 
 textfield = Text(frame, bg = "#a5c0c9")
 textfield.pack()
-textfield.place(x=10, y=10, height=700, width=700)
+textfield.place(x=10, y=10, height=510, width=700)
 
 screen = Canvas(frame, bg = "black")
 screen.pack()
-screen.place(x=720, y=10, height=128, width=128)
+screen.place(x=720, y=10, height=512, width=512)
+#draw_pixel(10,30,'red')
 
 
 root.config(menu=menubar)
